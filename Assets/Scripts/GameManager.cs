@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
         pacman.ResetState();
     }
 
+// iki gemover ngabs
     private void GameOver()
     {
         gameOverText.enabled = true;
