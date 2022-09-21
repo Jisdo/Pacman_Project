@@ -94,7 +94,9 @@ public class GameManager : MonoBehaviour
 
         SetLives(lives - 1);
 
-        if (lives <= 0) {
+        if (lives > 0) {
+            Invoke(nameof(ResetState), 3f);
+        } else { 
             GameOver();
         }
     }
