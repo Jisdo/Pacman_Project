@@ -15,7 +15,7 @@ public abstract class GhostBehavior : MonoBehaviour
     {
         Enable(duration);
     }
-
+    
     public virtual void Enable(float duration)
     {
         enabled = true;
