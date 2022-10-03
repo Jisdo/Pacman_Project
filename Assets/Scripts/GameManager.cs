@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     private void NewGame()
     {
         SetScore(0);
-        SetLives(10);
+        SetLives(1);
         NewRound();
     }
 

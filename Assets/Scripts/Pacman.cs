@@ -14,7 +14,7 @@ public class Pacman : MonoBehaviour
         collider = GetComponent<Collider2D>();
         movement = GetComponent<Movement>();
     }
-    //awokawok
+
     private void Update()
     {
         // Set the new direction based on the current input
