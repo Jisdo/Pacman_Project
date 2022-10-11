@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     private void NewGame()
     {
         SetScore(0);
-        SetLives(1);
+        SetLives(3);
         NewRound();
     }
 
@@ -84,6 +84,12 @@ public class GameManager : MonoBehaviour
     {
         this.score = score;
         scoreText.text = score.ToString().PadLeft(2, '0');
+    }
+
+    public void HealthBuffEaten(HealthBuff health)
+    {
+        health.gameObject.SetActive(false);
+        SetLives(lives + health.points);
     }
 
     //Tamam
