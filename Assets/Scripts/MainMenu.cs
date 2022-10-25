@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Pacman closed");
 
     }
+    
     public void StartGame()
     {
         Debug.Log("Pacman closed");
