@@ -86,12 +86,6 @@ public class GameManager : MonoBehaviour
         scoreText.text = score.ToString().PadLeft(2, '0');
     }
 
-    public void HealthBuffEaten(HealthBuff health)
-    {
-        health.gameObject.SetActive(false);
-        SetLives(lives + health.points);
-    }
-
     //Tamam
     //Ketika pacman dimakan akan mengurangi nyawanya sebanyak 1, jika nyawa habis maka akan game over
     public void PacmanEaten()
