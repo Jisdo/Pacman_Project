@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] UnityEngine.Rendering.Universal.Light2D _light;
     public Ghost[] ghosts;
     public Pacman pacman;
     public Transform pellets;
@@ -84,12 +85,6 @@ public class GameManager : MonoBehaviour
     {
         this.score = score;
         scoreText.text = score.ToString().PadLeft(2, '0');
-    }
-
-    public void HealthBuffEaten(HealthBuff health)
-    {
-        health.gameObject.SetActive(false);
-        SetLives(lives + health.points);
     }
 
     //Tamam
