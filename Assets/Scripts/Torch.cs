@@ -24,17 +24,4 @@ public class Torch : MonoBehaviour
 
         _light.intensity -= (speed / 100) * Time.deltaTime;
     }
-
-    private void Reset()
-    {
-        _light.intensity = 1f;
-        Destroy(gameObject);
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Pacman")) {
-            Reset();
-        }
-    }
 }
