@@ -3,10 +3,17 @@ using UnityEngine;
 [RequireComponent(typeof(Movement))]
 public class Pacman : MonoBehaviour
 {
+    private Torch torch;
     public AnimatedSprite deathSequence;
     public SpriteRenderer spriteRenderer { get; private set; }
     public new Collider2D collider { get; private set; }
     public Movement movement { get; private set; }
+
+
+    private void Start()
+    {
+        torch = GetComponentInChildren<Torch>();
+    }
 
     private void Awake()
     {
@@ -17,7 +24,6 @@ public class Pacman : MonoBehaviour
 
     private void Update()
     {
-        // Set the new direction based on the current input
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) {
             movement.SetDirection(Vector2.up);
         }
@@ -30,8 +36,6 @@ public class Pacman : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) {
             movement.SetDirection(Vector2.right);
         }
-
-        // Rotate pacman to face the movement direction
         float angle = Mathf.Atan2(movement.direction.y, movement.direction.x);
         transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.forward);
     }

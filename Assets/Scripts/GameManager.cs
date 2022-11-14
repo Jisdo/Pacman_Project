@@ -3,12 +3,11 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] UnityEngine.Rendering.Universal.Light2D _light;
     public Ghost[] ghosts;
     public Pacman pacman;
     public Transform pellets;
+    public ResetLight2D light;
 
-    public Text gameOverText;
     public Text scoreText;
     public Text livesText;
 
@@ -20,37 +19,20 @@ public class GameManager : MonoBehaviour
     {
         NewGame();
     }
-
-    private void Update()
-    {
-        //Ketika game over sudah dijalankan, maka tinggal pencet tombol untuk pacmannya bergerak akan langsung new game
-        if (lives <= 0 && Input.anyKeyDown) {
-            NewGame();
-        }
-    }
-
-    //Andhika
-    //Game baru dimulai akan mengatur score, lives 
     private void NewGame()
     {
         SetScore(0);
         SetLives(3);
         NewRound();
     }
-
-    //Jika pellet sudah habis / sudah game over lalu play again maka pellet akan muncul kembali seperti semula
     private void NewRound()
     {
-        gameOverText.enabled = false;
-
         foreach (Transform pellet in pellets) {
             pellet.gameObject.SetActive(true);
         }
 
         ResetState();
     }
-
-    //Code untuk mengembalikan pacman ketempat semula saat new game
     private void ResetState()
     {
         for (int i = 0; i < ghosts.Length; i++) {
@@ -59,36 +41,16 @@ public class GameManager : MonoBehaviour
 
         pacman.ResetState();
     }
-
-    //Rajis
-    //Ini adalah code saat game over, teks game over akan ditampilkan dan pacman akan di destroy
-    private void GameOver()
-    {
-        gameOverText.enabled = true;
-
-        for (int i = 0; i < ghosts.Length; i++) {
-            ghosts[i].gameObject.SetActive(false);
-        }
-
-        pacman.gameObject.SetActive(false);
-    }
-
-    //Ini untuk menampilkan jumlah nyawa dari pacman
     private void SetLives(int lives)
     {
         this.lives = lives;
         livesText.text = "x" + lives.ToString();
     }
-
-    //Menampilkan text score di game
     private void SetScore(int score)
     {
         this.score = score;
         scoreText.text = score.ToString().PadLeft(2, '0');
     }
-
-    //Tamam
-    //Ketika pacman dimakan akan mengurangi nyawanya sebanyak 1, jika nyawa habis maka akan game over
     public void PacmanEaten()
     {
         pacman.DeathSequence();
@@ -97,12 +59,8 @@ public class GameManager : MonoBehaviour
 
         if (lives > 0) {
             Invoke(nameof(ResetState), 3f);
-        } else { 
-            GameOver();
-        }
+        } else;
     }
-
-    //Ini code untuk menambah point saat pacman memakan hantu
     public void GhostEaten(Ghost ghost)
     {
         int points = ghost.points * ghostMultiplier;
@@ -110,10 +68,6 @@ public class GameManager : MonoBehaviour
 
         ghostMultiplier++;
     }
-
-    //Afin
-    //Ini adalah code untukmenampilkan point saat pacman memakan pellet
-    //Setiap pellet bernilai 10 point
     public void PelletEaten(Pellet pellet)
     {
         pellet.gameObject.SetActive(false);
@@ -121,7 +75,6 @@ public class GameManager : MonoBehaviour
         SetScore(score + pellet.points);
 
         if (!HasRemainingPellets())
-            //jika pellet habis otomatis akan new game
         {
             pacman.gameObject.SetActive(false);
             Invoke(nameof(NewRound), 3f);
