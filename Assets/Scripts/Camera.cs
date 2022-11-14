@@ -8,7 +8,7 @@ public class Camera : MonoBehaviour
     public float smoothSpeed;
     public Vector3 offset;
     
-    //kamera om
+
     private void FixedUpdate()
     {
         Vector3 positionCamera = targetCamera.localPosition + offset;

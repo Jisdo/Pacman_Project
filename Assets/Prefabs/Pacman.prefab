@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5580138926130255580
+--- !u!1 &1690192241198042308
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7945050684414726772}
-  - component: {fileID: 9163990401802487224}
-  - component: {fileID: 3233835525746378017}
+  - component: {fileID: 7229904348838390904}
+  - component: {fileID: 30954086737231431}
+  - component: {fileID: 5990707090865339216}
   m_Layer: 6
-  m_Name: Light 2D
+  m_Name: Torch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7945050684414726772
+--- !u!4 &7229904348838390904
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5580138926130255580}
+  m_GameObject: {fileID: 1690192241198042308}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,13 +33,13 @@ Transform:
   m_Father: {fileID: 6038318316045854524}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9163990401802487224
+--- !u!114 &30954086737231431
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5580138926130255580}
+  m_GameObject: {fileID: 1690192241198042308}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 6.9
+  m_PointLightOuterRadius: 6.834141
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -111,23 +111,25 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!114 &3233835525746378017
+--- !u!114 &5990707090865339216
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5580138926130255580}
+  m_GameObject: {fileID: 1690192241198042308}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27e3df2b1a0aa9b45b6fdc945ae04784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _light: {fileID: 9163990401802487224}
-  speed: 1
+  _light: {fileID: 0}
+  speed: 1.5
+  protectionRadius: 0
   infinity: 0
-  outerRadiusMin: 6
-  outerRadiusMax: 7
+  outerRadiusMin: 6.4
+  outerRadiusMax: 6.9
+  protection: {fileID: 0}
 --- !u!1 &6038318316045854526
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,7 +165,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5896912869381591406}
-  - {fileID: 7945050684414726772}
+  - {fileID: 7229904348838390904}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
