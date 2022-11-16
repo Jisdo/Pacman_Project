@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class GameManager : MonoBehaviour
     private void NewGame()
     {
         SetScore(0);
-        SetLives(3);
+        SetLives(1);
         NewRound();
     }
     private void NewRound()
@@ -36,7 +37,8 @@ public class GameManager : MonoBehaviour
     }
     private void GameOver()
     {
-        gameOver.Setup(score);
+        SceneManager.LoadScene("PlayAgain");
+        Time.timeScale = 1;
 
         for (int i = 0; i < ghosts.Length; i++) {
             ghosts[i].gameObject.SetActive(false);
