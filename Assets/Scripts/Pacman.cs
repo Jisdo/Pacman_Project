@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using TMPro;
 [RequireComponent(typeof(Movement))]
 public class Pacman : MonoBehaviour
 {
@@ -9,6 +9,9 @@ public class Pacman : MonoBehaviour
     public new Collider2D collider { get; private set; }
     public Movement movement { get; private set; }
 
+    [SerializeField] private TextMeshProUGUI _scoreText;
+    private int _score = 0;
+    public GameOver over;
 
     private void Start()
     {
@@ -24,16 +27,20 @@ public class Pacman : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) {
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        {
             movement.SetDirection(Vector2.up);
         }
-        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) {
+        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        {
             movement.SetDirection(Vector2.down);
         }
-        else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) {
+        else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        {
             movement.SetDirection(Vector2.left);
         }
-        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) {
+        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        {
             movement.SetDirection(Vector2.right);
         }
         float angle = Mathf.Atan2(movement.direction.y, movement.direction.x);
@@ -61,5 +68,8 @@ public class Pacman : MonoBehaviour
         deathSequence.spriteRenderer.enabled = true;
         deathSequence.Restart();
     }
-
+    public void GameOver()
+    {
+        over.Setup(_score);
+    }
 }
